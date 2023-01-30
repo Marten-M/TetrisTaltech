@@ -6,6 +6,11 @@ Tetris game for taltech final course 2022/2023
 - Ronja Niine Lõhmuste
 - Joosep Lukin
 
+## Playing the game
+To play the game, first install all requirements by running `python3 -m pip install -r requirements.txt`
+Then start the game with `python3 main.py`
+
+
 ## Game logic
 Every game element is treates as an object, as well as the game itself.
 The game has 4 states (also objects):
