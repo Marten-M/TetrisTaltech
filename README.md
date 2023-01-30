@@ -24,23 +24,24 @@ The game has 4 states (also objects):
   > The game over state displays the stats after the game is finished - the number of rows each player cleared and their score. If a 1VS1 game was played, the winner is also displayed. There is also an option to return to title screen.
 
  
- ## TODO
- 
- ### Important features:
- - [ ] Create basic game engine
-   - [ ] Create rendering engine
-   - [ ] Create basic state logic
-   - [ ] Create Title screen state core logic
-   - [ ] Create Player settings state core logic
-   - [ ] Create Play state core logic
-   - [ ] Create Game over state core logic
- - [ ] Create game logic
-  - [ ] Title screen state
-  - [ ] Player selection state
-  - [ ] Play state
-  - [ ] Game over state
+## TODO
+
+### Important features:
+- [ ] Create basic game engine
+  - [ ] Create rendering engine
+  - [ ] Create basic state logic
+  - [ ] Create Title screen state core logic
+  - [ ] Create Player settings state core logic
+  - [ ] Create Play state core logic
+  - [ ] Create Game over state core logic
+- [ ] Create game logic
+- [ ] Title screen state
+- [ ] Player selection state
+- [ ] Play state
+- [ ] Game over state
 
 
 ### Optional features
- - [ ] Add music
- - [ ] Add animation effects
+- [ ] Add music
+- [ ] Add animation effects
+- [ ] Train neural network to play Tetris :)
