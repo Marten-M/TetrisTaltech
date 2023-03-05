@@ -27,14 +27,16 @@ The game has 4 states (also objects):
 ## TODO
 
 ### Important features:
-- [ ] Create basic game engine
-  - [ ] Create rendering engine
-  - [ ] Create basic state logic
-  - [ ] Create Title screen state core logic
-  - [ ] Create Player settings state core logic
-  - [ ] Create Play state core logic
-  - [ ] Create Game over state core logic
-- [ ] Create game logic
+- [x] Create basic game engine
+  - [x] Create rendering engine
+  - [x] Create basic state logic
+  - [x] Create Title screen state core logic
+  - [x] Create Player settings state core logic
+  - [x] Create Play state core logic
+  - [x] Create Game over state core logic
+- [ ] Create game functions
+  - [ ] Create game element basic logic
+  - [ ] Create tetris blocks logic
 - [ ] Title screen state
 - [ ] Player selection state
 - [ ] Play state

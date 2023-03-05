@@ -6,6 +6,9 @@ file_dir = os.path.dirname(__file__)
 fonts_path = os.path.join(os.path.dirname(file_dir), "fonts")
 arcade_classic_font_path = os.path.join(fonts_path, "ARCADECLASSIC.TTF")
 
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = 675
+
 gFonts = {
     "smallFont": pygame.font.Font(arcade_classic_font_path, 16),
     "mediumFont": pygame.font.Font(arcade_classic_font_path, 32),

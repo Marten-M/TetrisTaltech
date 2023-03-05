@@ -1,12 +1,16 @@
 """Base state class file."""
 
+from ..lib.screen import Screen
+
+
 class BaseState(object):
     """
     Base state with empty functions for the games different states.
     """
-    def __init__(self) -> None:
+    def __init__(self, screen: Screen) -> None:
         """Initialize base class."""
         self.drawFPS = True # Draw FPS by default
+        self.screen = screen
 
     def enter(self, params: dict=dict()) -> None:
         """
@@ -17,11 +21,12 @@ class BaseState(object):
         pass
 
 
-    def update(self, dt: float) -> None:
+    def update(self, dt: float) -> bool:
         """
         The function that is called every frame. Game logic should be included here.
 
         :param dt: time in milliseconds since last frame
+        :return: boolean indicating whether the state should change
         """
         pass
 
