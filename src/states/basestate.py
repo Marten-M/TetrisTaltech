@@ -11,6 +11,7 @@ class BaseState(object):
         """Initialize base class."""
         self.drawFPS = True # Draw FPS by default
         self.screen = screen
+        self.exit_params = dict()
 
     def enter(self, params: dict=dict()) -> None:
         """
@@ -28,17 +29,11 @@ class BaseState(object):
         :param dt: time in milliseconds since last frame
         :return: boolean indicating whether the state should change
         """
-        pass
+        return False
 
     def render(self) -> None:
         """
         The function that renders everything to the screen.
-        """
-        pass
-
-    def debug(self) -> None:
-        """
-        Gets called when debug mode is enabled.
         """
         pass
     
@@ -46,6 +41,8 @@ class BaseState(object):
         """
         Exit function gets called when state is exited.
 
+        One of the parameters should be named 'state' and its value the next state to change to.
+
         :return: dictionary containing exit parameters
         """
-        return dict()
+        return self.exit_params()

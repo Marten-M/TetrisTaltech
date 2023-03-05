@@ -30,13 +30,14 @@ class Game(object):
         self.screen = Screen(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.clock = pygame.time.Clock()
 
-    def change_state(self, new_state: str, *ignore, params: dict=dict()) -> None:
+    def change_state(self, *ignore, params: dict=dict()) -> None:
         """
         Change game state.
 
         :param new_state: new state to enter
         """
         params |= self.state.exit()
+        new_state = params.pop('state')
         self.state: BaseState = self.states[new_state](self.screen)
         self.state.enter(params)
 
@@ -50,7 +51,9 @@ class Game(object):
             # Udate state
             dt = self.clock.tick()
             cur_time += dt / 1000
-            self.state.update(dt)
+            if self.state.update(dt):
+                self.change_state()
+                continue
             # Render to screen
             self.screen.clear()
             self.state.render()
