@@ -2,7 +2,7 @@
 Tetris game for taltech final course 2022/2023
 
 ## Members
-- Marten Mehide
+- Mjäuten Mehide
 - Ronja Niine Lõhmuste
 - Joosep Lukin
 
