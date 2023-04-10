@@ -3,6 +3,7 @@
 import pygame
 from src.constants import gFonts, gColors
 
+
 class Screen:
     """Class for rendering objects to the screen."""
     def __init__(self, width: int, height: int) -> None:

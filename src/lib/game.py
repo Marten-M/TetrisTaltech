@@ -11,6 +11,7 @@ from ..states.playersettingsstate import PlayerSettingsState
 from ..states.playstate import PlayState
 from ..states.gameoverstate import GameOverState
 
+
 class Game(object):
     """Class for running and managing the game."""
     def __init__(self, initial_state: str) -> None:
@@ -26,8 +27,8 @@ class Game(object):
             "Play": PlayState,
             "GameOver": GameOverState
         }
-        self.state: BaseState = self.states[initial_state]()
         self.screen = Screen(SCREEN_WIDTH, SCREEN_HEIGHT)
+        self.state: BaseState = self.states[initial_state](self.screen)
         self.clock = pygame.time.Clock()
 
     def change_state(self, *ignore, params: dict=dict()) -> None:
@@ -48,7 +49,7 @@ class Game(object):
         cur_time = 0
         fps = int(self.clock.get_fps())
         while True:
-            # Udate state
+            # Update state
             dt = self.clock.tick()
             cur_time += dt / 1000
             if self.state.update(dt):
