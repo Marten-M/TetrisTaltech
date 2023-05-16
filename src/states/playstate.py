@@ -16,7 +16,7 @@ class PlayState(BaseState):
         """Initialize state."""
         super().__init__(screen)
         self.board = Board(SCREEN_WIDTH // 2 - HORIZONTAL_TILES // 2 * BLOCK_SIZE, SCREEN_HEIGHT // 2 - VERTICAL_TILES // 2 * BLOCK_SIZE, self.screen)
-        self.block_fall_speed_ms = 10 # How many milliseconds to wait before block falls down by 1
+        self.block_fall_speed_ms = 600 # How many milliseconds to wait before block falls down by 1
         self.blocks = [LBlock, TBlock, IBlock, ZBlock, ReverseLBlock, ReverseZBlock, Squareblock]
         # Get first block that falls
         self.block_count = 0

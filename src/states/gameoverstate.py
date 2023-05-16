@@ -1,5 +1,7 @@
 """GameOverState class file."""
 
+import pygame
+
 from .basestate import BaseState
 
 from ..constants import gColors, gFonts, BLOCK_SIZE, HORIZONTAL_TILES, SCREEN_WIDTH, SCREEN_HEIGHT
@@ -16,6 +18,17 @@ class GameOverState(BaseState):
     
     def update(self, dt: float) -> bool:
         """Update the game over state."""
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    return True
+        return False
+    
+    def exit(self) -> dict:
+        """Exit the game over state."""
+        self.exit_params["state"] = "TitleScreen"
+
+        return self.exit_params
 
     def render(self):
         """Render the game over state."""
