@@ -34,10 +34,10 @@ The game has 4 states (also objects):
   - [x] Create Player settings state core logic
   - [x] Create Play state core logic
   - [x] Create Game over state core logic
-- [ ] Create game functions
-  - [ ] Create game element basic logic
-  - [ ] Create tetris blocks logic
-- [ ] Title screen state
+- [x] Create game functions
+  - [x] Create game element basic logic
+  - [x] Create tetris blocks logic
+- [x] Title screen state
 - [ ] Player selection state
 - [ ] Play state
 - [ ] Game over state

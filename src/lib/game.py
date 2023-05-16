@@ -2,15 +2,11 @@
 
 import pygame
 
-from ..constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from ..constants import SCREEN_WIDTH, SCREEN_HEIGHT, gFonts, gColors
 from .screen import Screen
 
 from ..states.basestate import BaseState
-from ..states.titlescreenstate import TitleScreenState
-from ..states.playersettingsstate import PlayerSettingsState
-from ..states.playstate import PlayState
-from ..states.gameoverstate import GameOverState
-
+from ..states.states import gStates
 
 class Game(object):
     """Class for running and managing the game."""
@@ -21,14 +17,8 @@ class Game(object):
         :param initial_state: inital state of the game to enter
         """
         pygame.init()
-        self.states = {
-            "TitleScreen": TitleScreenState,
-            "PlayerSettings": PlayerSettingsState,
-            "Play": PlayState,
-            "GameOver": GameOverState
-        }
         self.screen = Screen(SCREEN_WIDTH, SCREEN_HEIGHT)
-        self.state: BaseState = self.states[initial_state](self.screen)
+        self.state: BaseState = gStates[initial_state](self.screen)
         self.clock = pygame.time.Clock()
 
     def change_state(self, *ignore, params: dict=dict()) -> None:
@@ -39,7 +29,7 @@ class Game(object):
         """
         params |= self.state.exit()
         new_state = params.pop('state')
-        self.state: BaseState = self.states[new_state](self.screen)
+        self.state: BaseState = gStates[new_state](self.screen)
         self.state.enter(params)
 
     def run(self) -> None:
@@ -64,8 +54,8 @@ class Game(object):
                 fps = int(self.clock.get_fps())
 
             if self.state.drawFPS:
-                self.screen.graphics["color"] = "white"
-                self.screen.graphics["font"] = "mediumFont"
+                self.screen["color"] = gColors["white"]
+                self.screen["font"] = gFonts["mediumFont"]
                 self.screen.draw_text(f"{fps} FPS", 10, 10, text_align="left")
 
             pygame.display.update()

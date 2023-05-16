@@ -59,7 +59,6 @@ class Tetromino(GameElement):
         self.main_x = x
         self.main_y = y
 
-
         self.id = id
         self.board = board
         self.color = color
@@ -78,7 +77,7 @@ class Tetromino(GameElement):
         """
         self.blocks.sort(key=lambda x: -x.x)
         for block in self.blocks:
-            if block.x + amount >= self.board.width or (self.board[block.y, block.x + amount] and self.board[block.y, block.x + amount].id != self.id):
+            if block.x + amount >= self.board.width or (self.board[block.y][block.x + amount] and self.board[block.y][block.x + amount].id != self.id):
                 return
 
         for block in self.blocks:
@@ -95,7 +94,7 @@ class Tetromino(GameElement):
         """
         self.blocks.sort(key=lambda x: x.x)
         for block in self.blocks:
-            if block.x - amount < 0 or (self.board[block.y, block.x - amount] and self.board[block.y, block.x - amount].id != self.id):
+            if block.x - amount < 0 or (self.board[block.y][block.x - amount] and self.board[block.y][block.x - amount].id != self.id):
                 return
 
         for block in self.blocks:
@@ -112,7 +111,7 @@ class Tetromino(GameElement):
         """
         self.blocks.sort(key=lambda x: -x.y)
         for block in self.blocks:
-            if block.y + amount >= self.board.height or (self.board[block.y + amount, block.x] and self.board[block.y + amount, block.x].id != self.id):
+            if block.y + amount >= self.board.height or (self.board[block.y + amount][block.x] and self.board[block.y + amount][block.x].id != self.id):
                 return
 
         for block in self.blocks:
@@ -129,7 +128,7 @@ class Tetromino(GameElement):
         """
         self.blocks.sort(key=lambda x: x.y)
         for block in self.blocks:
-            if block.y - amount < 0 or (self.board[block.y - amount, block.x] and self.board[block.y - amount, block.x].id != self.id):
+            if block.y - amount < 0 or (self.board[block.y - amount][block.x] and self.board[block.y - amount][block.x].id != self.id):
                 return
 
         for block in self.blocks:
@@ -148,6 +147,7 @@ class Tetromino(GameElement):
         for x, y in new_coords:
             if self.board[y][x] and self.board[y][x].id != self.id:
                 return
+
         for i in range(self.blocks):
             block = self.blocks[i]
             self.board[block.y][block.x] = 0
@@ -165,6 +165,7 @@ class Tetromino(GameElement):
         for x, y in new_coords:
             if self.board[y][x] and self.board[y][x].id != self.id:
                 return
+
         for i in range(self.blocks):
             block = self.blocks[i]
             self.board[block.y][block.x] = 0

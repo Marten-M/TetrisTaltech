@@ -1,7 +1,8 @@
 """Screen class file"""
 
 import pygame
-from src.constants import gFonts, gColors
+
+from ..constants import gFonts, gColors
 
 
 class Screen:
@@ -17,7 +18,7 @@ class Screen:
         self.graphics = {
             "color": gColors["black"],
             "border-width": 2, 
-            "font": "mediumFont"
+            "font": gFonts["mediumFont"]
             }
         self.display = self.create_display(width, height)
         pygame.display.update()
@@ -36,7 +37,7 @@ class Screen:
         :param y: vertical coordinate of middle point of text, if rect given then y coordinate relative to the rectangles top left corner
         :param rect: pygame Rect object to draw text into
         """
-        font = gFonts[self.graphics["font"]]
+        font = self.graphics["font"]
         size = pygame.font.Font.size(font, text)
 
         if rect is not None:
@@ -92,3 +93,12 @@ class Screen:
         # Fill screen with black
         screen.fill(gColors["black"])
         return screen
+    
+    def __setitem__(self, key, value):
+        """
+        Assign a value to an element in graphics.
+
+        :param key: aspect of graphics to set
+        :param value: value to set
+        """
+        self.graphics[key] = value
