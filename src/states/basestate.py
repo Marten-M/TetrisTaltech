@@ -45,4 +45,4 @@ class BaseState(object):
 
         :return: dictionary containing exit parameters
         """
-        return self.exit_params()
+        return self.exit_params

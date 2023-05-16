@@ -99,6 +99,6 @@ class TitleScreenState(BaseState):
         :return: dictionary mapping the next state's entry params to values. one of the dictionary keys is always "state"
         """
         self.exit_params = {
-                "state": "PlayerSettings",
+                "state": "Play",
             }
         return self.exit_params

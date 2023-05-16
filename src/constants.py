@@ -15,6 +15,7 @@ BLOCK_SIZE = 24
 VERTICAL_TILES = 20
 HORIZONTAL_TILES = 10
 
+
 player1Controls = {
     "left": pygame.K_a,
     "right": pygame.K_d,

@@ -1,4 +1,4 @@
-"""PlayerSettingsState class file."""
+"""PlayerSettingsState class file. THIS STATE IS DROPPED."""
 
 import pygame
 
