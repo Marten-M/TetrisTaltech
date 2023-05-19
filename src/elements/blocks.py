@@ -33,7 +33,7 @@ class Block(GameElement):
         self.board = board
 
         self.cleared = False
-    
+
     def force_move_down(self):
         """Forcefully move block down."""
         self.board[self.y][self.x] = 0

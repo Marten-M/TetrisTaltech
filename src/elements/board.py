@@ -5,6 +5,7 @@ from .gameelement import GameElement
 from ..lib.screen import Screen
 from ..constants import VERTICAL_TILES, HORIZONTAL_TILES, BLOCK_SIZE, gColors
 
+
 class Board(GameElement):
     """Board class."""
     def __init__(self, x: int, y: int, screen: Screen) -> None:
