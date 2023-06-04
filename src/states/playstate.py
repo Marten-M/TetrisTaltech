@@ -17,7 +17,7 @@ class PlayState(BaseState):
         super().__init__(screen)
         self.board = Board(SCREEN_WIDTH // 2 - HORIZONTAL_TILES // 2 * BLOCK_SIZE, SCREEN_HEIGHT // 2 - VERTICAL_TILES // 2 * BLOCK_SIZE, self.screen)
         self.block_fall_speed_ms = 600 # How many milliseconds to wait before block falls down by 1
-        self.block_fall_multiplier = 2.05 # How much the falling speeds up after every cleared row
+        self.block_fall_multiplier = 1.3 # How much the falling speeds up after every cleared row
         self.cleared_rows = 0 # Used to check the change of self.board.cleared_rows
         self.blocks = [LBlock, TBlock, IBlock, ZBlock, ReverseLBlock, ReverseZBlock, Squareblock]
         # Get first block that falls
