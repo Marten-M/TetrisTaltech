@@ -82,14 +82,14 @@ class Board(GameElement):
         self.screen["color"] = gColors["white"]
         self.screen["border-width"] = 2
         self.screen.draw_box(fill=False, rect=self.rect)
-        # Render player leverl
+        # Render player level
         self.screen["color"] = gColors["white"]
         self.screen["font"] = gFonts["mediumFont"]
-        self.screen.draw_text(f"LEVEL {self.level}", 1000, 10, text_align="right")
-        # Render the Players score
+        self.screen.draw_text(f"LEVEL {self.level}", 1190, 20, text_align="right")
+        # Render the Player's score
         self.screen["color"] = gColors["white"]
         self.screen["font"] = gFonts["mediumFont"]
-        self.screen.draw_text(f"{self.player_score} POINTS", 1000, 40, text_align="right")
+        self.screen.draw_text(f"{self.player_score} POINTS", 1190, 50, text_align="right")
         
 
     def __getitem__(self, y: int) -> list:
