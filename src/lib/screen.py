@@ -49,7 +49,7 @@ class Screen:
         if text_align == "center":
             x -= size[0] / 2
         elif text_align == "right":
-            x += size[0] / 2
+            x -= size[0]
 
         # Draw text on screen
         self.display.blit(font.render(text, True, self.graphics["color"]), (x, y))
