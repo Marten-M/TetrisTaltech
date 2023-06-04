@@ -56,6 +56,6 @@ class Game(object):
             if self.state.drawFPS:
                 self.screen["color"] = gColors["white"]
                 self.screen["font"] = gFonts["mediumFont"]
-                self.screen.draw_text(f"{fps} FPS", 10, 10, text_align="left")
+                self.screen.draw_text(f"{fps} FPS", 10, 20, text_align="left")
 
             pygame.display.update()
