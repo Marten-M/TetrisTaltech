@@ -61,7 +61,8 @@ class PlayState(BaseState):
                     self.board.update_board()
                     self.speedup()
                     loss = self.board.detect_loss()
-                    self.falling_block = self.get_new_falling_block()
+                    if not loss:
+                        self.falling_block = self.get_new_falling_block()
                     return loss
 
         for event in pygame.event.get():
