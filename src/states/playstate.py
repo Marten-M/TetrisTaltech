@@ -53,8 +53,6 @@ class PlayState(BaseState):
         # Move block down, if that's what should happen
         if not self.paused:
             
-
-
             self.cur_timer_ms += dt
             if self.cur_timer_ms >= self.block_fall_speed_ms:
                 self.cur_timer_ms = 0
