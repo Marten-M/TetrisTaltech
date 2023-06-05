@@ -87,7 +87,7 @@ class Tetromino(GameElement):
 
         :param amount: how many tiles to move
 
-        :return: boolean indicating wether the block was moved or not
+        :return: boolean indicating whether the block was moved or not
         """
         self.blocks.sort(key=lambda x: -x.x)
         for block in self.blocks:
@@ -108,7 +108,7 @@ class Tetromino(GameElement):
 
         :param amount: how many tiles to move
 
-        :return: boolean indicating wether the block was moved or not
+        :return: boolean indicating whether the block was moved or not
         """
         self.blocks.sort(key=lambda x: x.x)
         for block in self.blocks:
@@ -129,7 +129,7 @@ class Tetromino(GameElement):
 
         :param amount: how many tiles to move
 
-        :return: boolean indicating wether the block was moved or not
+        :return: boolean indicating whether the block was moved or not
         """
         self.blocks.sort(key=lambda x: -x.y)
         for block in self.blocks:
@@ -154,7 +154,7 @@ class Tetromino(GameElement):
 
         :param amount: how many tiles to move
 
-        :return: boolean indicating wether the block was moved or not
+        :return: boolean indicating whether the block was moved or not
         """
         self.blocks.sort(key=lambda x: x.y)
         for block in self.blocks:
@@ -173,7 +173,7 @@ class Tetromino(GameElement):
         """
         Rotate tetromino clockwise, if possible.
 
-        :return: boolean indicating wether the block was moved or not
+        :return: boolean indicating whether the block was moved or not
         """
         new_coords = [] # List of coordinates in the form [(x, y), (x, y)]
         for block in self.blocks:
@@ -196,7 +196,7 @@ class Tetromino(GameElement):
         """
         Rotate tetromino counterclockwise, if possible.
 
-        :return: boolean indicating wether the block was moved or not
+        :return: boolean indicating whether the block was moved or not
         """
         new_coords = [] # List of coordinates in the form [(x, y), (x, y)]
         for block in self.blocks:
