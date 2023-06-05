@@ -7,7 +7,7 @@ from ..lib.screen import Screen
 from ..elements.board import Board
 from .basestate import BaseState
 from ..elements.blocks import Tetromino, LBlock, TBlock, IBlock, ZBlock, ReverseLBlock, ReverseZBlock, Squareblock
-from ..constants import BLOCK_SIZE, VERTICAL_TILES, HORIZONTAL_TILES, SCREEN_WIDTH, SCREEN_HEIGHT
+from ..constants import BLOCK_SIZE, VERTICAL_TILES, HORIZONTAL_TILES, SCREEN_WIDTH, SCREEN_HEIGHT, gFonts, gColors
 
 
 class PlayState(BaseState):
@@ -24,6 +24,7 @@ class PlayState(BaseState):
         self.block_count = 0
         self.falling_block = self.get_new_falling_block()
         self.cur_timer_ms = 0
+        self.paused = False
 
     def speedup(self):
         """Speed up the dropping of blocks"""
@@ -44,20 +45,26 @@ class PlayState(BaseState):
     def score(self, rows):
         """Add points to the player score according to level and cleared rows"""
         self.board.player_score += rows ** 2 * self.board.level
+        print(self.board.player_score)
+
 
     def update(self, dt: float) -> bool:
         """Update the play state every frame."""
         # Move block down, if that's what should happen
-        self.cur_timer_ms += dt
-        if self.cur_timer_ms >= self.block_fall_speed_ms:
-            self.cur_timer_ms = 0
+        if not self.paused:
+            
 
-            if not self.falling_block.move_down(1):
-                self.board.update_board()
-                self.speedup()
-                loss = self.board.detect_loss()
-                self.falling_block = self.get_new_falling_block()
-                return loss
+
+            self.cur_timer_ms += dt
+            if self.cur_timer_ms >= self.block_fall_speed_ms:
+                self.cur_timer_ms = 0
+
+                if not self.falling_block.move_down(1):
+                    self.board.update_board()
+                    self.speedup()
+                    loss = self.board.detect_loss()
+                    self.falling_block = self.get_new_falling_block()
+                    return loss
 
         for event in pygame.event.get():
             if event.type == pygame.KEYUP: # If a keyboard button was depressed
@@ -65,19 +72,22 @@ class PlayState(BaseState):
                     self.block_fall_speed_ms *= 4
 
             if event.type == pygame.KEYDOWN: # If a keyboard button was pressed
-                if event.key == pygame.K_LEFT:
-                    self.falling_block.move_left(1)
-                elif event.key == pygame.K_RIGHT:
-                    self.falling_block.move_right(1)
-                elif event.key == pygame.K_UP:
-                    self.falling_block.rotate_counterclockwise()
-                elif event.key == pygame.K_DOWN:
-                    self.falling_block.rotate_clockwise()
-                elif event.key == pygame.K_m:
-                    self.block_fall_speed_ms /= 4
-                elif event.key == pygame.K_SPACE:
-                    while self.falling_block.move_down(1):
-                        pass
+                if not self.paused:
+                    if event.key == pygame.K_LEFT:
+                        self.falling_block.move_left(1)
+                    elif event.key == pygame.K_RIGHT:
+                        self.falling_block.move_right(1)
+                    elif event.key == pygame.K_UP:
+                        self.falling_block.rotate_counterclockwise()
+                    elif event.key == pygame.K_DOWN:
+                        self.falling_block.rotate_clockwise()
+                    elif event.key == pygame.K_m:
+                        self.block_fall_speed_ms /= 4
+                    elif event.key == pygame.K_SPACE:
+                        while self.falling_block.move_down(1):
+                            pass
+                if event.key == pygame.K_p:
+                        self.paused = not self.paused
 
         return False
 
@@ -85,6 +95,10 @@ class PlayState(BaseState):
         """Render the play state."""
         # Render the board and blocks
         self.board.render()
+        if self.paused:
+            self.screen["color"] = gColors["red"]
+            self.screen["font"] = gFonts["extremelyLargeFont"]
+            self.screen.draw_text("PAUSED", 600, 330, text_align="center")
 
     def exit(self) -> dict:
         """Exit the play state."""
