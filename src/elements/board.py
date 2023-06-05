@@ -75,6 +75,12 @@ class Board(GameElement):
 
     def render(self):
         """Render the board and all its blocks."""
+        # Gridlines
+        self.screen["color"] = gColors["gray"]
+        for i in range(HORIZONTAL_TILES):
+            self.screen.draw_box(1, VERTICAL_TILES * BLOCK_SIZE, self.rect.left + BLOCK_SIZE * i, self.rect.top)
+        for i in range(VERTICAL_TILES):    
+            self.screen.draw_box(HORIZONTAL_TILES * BLOCK_SIZE, 1, self.rect.left, self.rect.top + BLOCK_SIZE * i)
         # Render blocks
         for id in self.tetrominos:
             self.tetrominos[id].render()
