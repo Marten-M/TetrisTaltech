@@ -3,7 +3,7 @@ import pygame
 
 from .gameelement import GameElement
 from ..lib.screen import Screen
-from ..constants import VERTICAL_TILES, HORIZONTAL_TILES, BLOCK_SIZE, gColors, gFonts
+from ..constants import VERTICAL_TILES, HORIZONTAL_TILES, BLOCK_SIZE, gColors, gFonts, SCREEN_WIDTH, SCREEN_HEIGHT
 
 class Board(GameElement):
     """Board class."""
@@ -82,7 +82,7 @@ class Board(GameElement):
         self.screen["color"] = gColors["white"]
         self.screen["border-width"] = 2
         self.screen.draw_box(fill=False, rect=self.rect)
-        # Render player leverl
+        # Render player level
         self.screen["color"] = gColors["white"]
         self.screen["font"] = gFonts["mediumFont"]
         self.screen.draw_text(f"LEVEL {self.level}", 1000, 10, text_align="right")
