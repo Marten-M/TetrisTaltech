@@ -1,5 +1,6 @@
 """Board class file."""
 import pygame
+import time
 
 from .gameelement import GameElement
 from ..lib.screen import Screen
@@ -45,6 +46,7 @@ class Board(GameElement):
                 for block in self.board[other_y]:
                     if block:
                         block.force_move_down()
+        
 
     def clear_row(self, row: int):
         """

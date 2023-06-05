@@ -45,14 +45,11 @@ class PlayState(BaseState):
     def score(self, rows):
         """Add points to the player score according to level and cleared rows"""
         self.board.player_score += rows ** 2 * self.board.level
-        print(self.board.player_score)
-
 
     def update(self, dt: float) -> bool:
         """Update the play state every frame."""
         # Move block down, if that's what should happen
         if not self.paused:
-            
             self.cur_timer_ms += dt
             if self.cur_timer_ms >= self.block_fall_speed_ms:
                 self.cur_timer_ms = 0
@@ -67,7 +64,7 @@ class PlayState(BaseState):
 
         for event in pygame.event.get():
             if event.type == pygame.KEYUP: # If a keyboard button was depressed
-                if event.key == pygame.K_m:
+                if event.key == pygame.K_DOWN:
                     self.block_fall_speed_ms *= 4
 
             if event.type == pygame.KEYDOWN: # If a keyboard button was pressed
@@ -76,15 +73,22 @@ class PlayState(BaseState):
                         self.falling_block.move_left(1)
                     elif event.key == pygame.K_RIGHT:
                         self.falling_block.move_right(1)
-                    elif event.key == pygame.K_UP:
+                    elif event.key == pygame.K_z:
                         self.falling_block.rotate_counterclockwise()
-                    elif event.key == pygame.K_DOWN:
+                    elif event.key == pygame.K_x:
                         self.falling_block.rotate_clockwise()
-                    elif event.key == pygame.K_m:
+                    elif event.key == pygame.K_DOWN:
                         self.block_fall_speed_ms /= 4
                     elif event.key == pygame.K_SPACE:
                         while self.falling_block.move_down(1):
                             pass
+                        self.board.update_board()
+                        self.speedup()
+                        loss = self.board.detect_loss()
+                        if not loss:
+                            self.falling_block = self.get_new_falling_block()
+                        return loss
+                    
                 if event.key == pygame.K_p:
                         self.paused = not self.paused
 
