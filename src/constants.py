@@ -4,8 +4,12 @@ import os
 
 
 file_dir = os.path.dirname(__file__)
+
 fonts_path = os.path.join(os.path.dirname(file_dir), "fonts")
 arcade_classic_font_path = os.path.join(fonts_path, "ARCADECLASSIC.TTF")
+
+musics_path = os.path.join(os.path.dirname(file_dir), "music")
+synthwave_path = os.path.join(musics_path, "Synthwave_UT4.mp3")
 
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 675
