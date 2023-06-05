@@ -237,7 +237,9 @@ class Tetromino(GameElement):
         
         for x, y in block_coords:
             if can_spawn:
-                self.blocks.append(Block(x, y, self.color, self.id, self.board.rect, self.screen, self.board))
+                block = Block(x, y, self.color, self.id, self.board.rect, self.screen, self.board)
+                self.blocks.append(block)
+                self.board[y][x] = block
             else:
                 self.blocks.append(Block(x, y - 3, self.color, self.id, self.board.rect, self.screen, self.board))
 

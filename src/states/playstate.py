@@ -44,8 +44,6 @@ class PlayState(BaseState):
     def score(self, rows):
         """Add points to the player score according to level and cleared rows"""
         self.board.player_score += rows ** 2 * self.board.level
-        print(self.board.player_score)
-
 
     def update(self, dt: float) -> bool:
         """Update the play state every frame."""
