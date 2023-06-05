@@ -2,7 +2,7 @@
 
 import pygame
 
-from ..constants import SCREEN_WIDTH, SCREEN_HEIGHT, gFonts, gColors
+from ..constants import SCREEN_WIDTH, SCREEN_HEIGHT, gFonts, gColors, synthwave_path
 from .screen import Screen
 
 from ..states.basestate import BaseState
@@ -38,6 +38,9 @@ class Game(object):
         """
         cur_time = 0
         fps = int(self.clock.get_fps())
+        pygame.mixer.music.load(synthwave_path)
+        pygame.mixer.music.play(loops=-1)
+
         while True:
             # Update state
             dt = self.clock.tick()
