@@ -6,6 +6,7 @@ from .basestate import BaseState
 
 from ..constants import gColors, gFonts, BLOCK_SIZE, HORIZONTAL_TILES, SCREEN_WIDTH, SCREEN_HEIGHT
 
+
 class GameOverState(BaseState):
     """Class for managing the game over state."""
     def __init__(self, screen):
@@ -23,7 +24,7 @@ class GameOverState(BaseState):
                 if event.key == pygame.K_RETURN:
                     return True
         return False
-    
+
     def exit(self) -> dict:
         """Exit the game over state."""
         self.exit_params["state"] = "TitleScreen"

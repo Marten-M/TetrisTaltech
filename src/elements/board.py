@@ -76,7 +76,7 @@ class Board(GameElement):
     def render(self):
         """Render the board and all its blocks."""
         # Gridlines
-        self.screen["color"] = gColors["gray"]
+        self.screen["color"] = gColors["dark_gray"]
         for i in range(HORIZONTAL_TILES):
             self.screen.draw_box(1, VERTICAL_TILES * BLOCK_SIZE, self.rect.left + BLOCK_SIZE * i, self.rect.top)
         for i in range(VERTICAL_TILES):    
